@@ -1,4 +1,5 @@
 import cv2
+import datetime
 
 '''
 เปิดกล้อง
@@ -46,6 +47,8 @@ while (capture.isOpened()):
     check , frame = capture.read() #รับภาพจากกล้อง frame ต่อ frame
 
     if check == True:
+     currentDate = str(datetime.datetime.now())
+     cv2.putText(frame,currentDate,(10,30),cv2.FONT_HERSHEY_SIMPLEX,0.8,(0,0,0),2)
     #  vdoGray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)#ปรับสี Video เป็นสีเทา
      cv2.imshow("output",frame)
      if cv2.waitKey(1) & 0xFF == ord("e"):
